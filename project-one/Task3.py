@@ -52,13 +52,18 @@ def findTheNumbers():
     #班加罗尔是主叫电话，寻找被叫电话calls[1]
     #保存被班加罗尔呼叫的电话
     nset = set()
+    numList = []
+    totalList = []
     beijiaoset = set()
     for call in calls:
         bagNumber = call[0]
         if bagNumber.startswith('(080)'):
             nset.add(call[1])
+            totalList.append(call[1])
             if call[1].startswith('(080)'):
                 beijiaoset.add(call[1])
+                #为part2计算比例保存在list中
+                numList.append(call[1])
 
     bgset = set()
     for gu in nset:
@@ -81,7 +86,7 @@ def findTheNumbers():
         print("The numbers called by people in Bangalore have codes: {}".format(i))
 
     #part2
-    rate = len(beijiaoset) / len(nset)
+    rate = len(numList) / len(totalList)
     print("%.2f percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore." %(rate * 100))
 
 findTheNumbers()

@@ -39,22 +39,23 @@ def findtheBoringNumber():
         reader = csv.reader(f)
         calls = list(reader)
 
-    #收集所有拨出电话
+    # 收集所有拨出电话
     teleset = set()
 
     for call in calls:
         teleset.add(call[0])
-        #剔除出现在被叫电话中的号码
+
+    # 1.剔除出现在被叫电话中的号码
+    for call in calls:
         if call[1] in teleset:
             teleset.remove(call[1])
-
-    #剔除出现在短信中的电话号码
+    # 2.剔除出现在短信中的电话号码
     for text in texts:
         if text[0] in teleset:
             teleset.remove(text[0])
         if text[1] in teleset:
             teleset.remove(text[1])
-    print(teleset)
+
     telelist = []
 
     for tele in teleset:
@@ -64,5 +65,6 @@ def findtheBoringNumber():
     #打印
     for i in telelist:
         print("These numbers could be telemarketers: {}".format(i))
+
 findtheBoringNumber()
 
