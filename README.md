@@ -1,2 +1,2 @@
-# udacity-learning
-This is my task for project of machine learning
+# machine-learning
+record my machine learning
